@@ -35,7 +35,7 @@ function listenForCredentials (endpointKey, popup, provider, resolve, reject) {
     if (creds && creds.uid) {
       popup.close();
       persistData(C.SAVED_CREDS_KEY, normalizeTokenKeys(creds));
-      fetch(getTokenValidationPath(endpointKey))
+      fetch(getTokenValidationPath(endpointKey), { credentials: "include" /* so we can set cookies here */ })
         .then(parseResponse)
         .then(({data}) => resolve(data))
         .catch(({errors}) => reject({errors}));
