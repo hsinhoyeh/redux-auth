@@ -61,4 +61,5 @@ class OAuthSignInButton extends React.Component {
   }
 }
 
-export default connect(({auth}) => ({auth}))(OAuthSignInButton);
+export default connect((state) => ({auth: state.get('auth')}))(OAuthSignInButton);
+//export default connect(({auth}) => ({auth}))(OAuthSignInButton);
